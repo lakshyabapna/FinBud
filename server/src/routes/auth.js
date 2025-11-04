@@ -1,5 +1,5 @@
 const express = require("express");
-const { signupUser, loginUser } = require("../controllers/authController");
+const { signupUser, loginUser, getUser } = require("../controllers/authController");
 
 const router = express.Router();
 
@@ -13,8 +13,9 @@ router.post("/login", (req, res) => {
   loginUser(req, res);
 });
 
+router.get("/me", (req, res) => {
+  console.log("👤 /me route hit with token:", req.headers.authorization);
+  getUser(req, res);
+});
+
 module.exports = router;
-
-
-
-

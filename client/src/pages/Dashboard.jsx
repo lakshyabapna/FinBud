@@ -12,8 +12,7 @@ export default function Dashboard() {
       return;
     }
 
-    // Example: verify token and get user details
-    fetch("http://localhost:5000/api/auth/me", {
+    fetch("http://localhost:5001/api/auth/me", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())

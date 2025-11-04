@@ -45,5 +45,24 @@ const loginUser = async (req, res) => {
     res.status(500).json({ message: "Error logging in", error: error.message });
   }
 };
+const getUser = async (req, res) => {
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token) return res.status(401).json({ error: "No token provided" });
 
-module.exports = { signupUser, loginUser };
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await prisma.user.findUnique({
+      where: { id: decoded.id },
+      select: { id: true, name: true, email: true },
+    });
+
+    if (!user) return res.status(404).json({ error: "User not found" });
+
+    res.json({ user });
+  } catch (error) {
+    console.error(error);
+    res.status(401).json({ error: "Invalid or expired token" });
+  }
+};
+
+module.exports = { signupUser, loginUser, getUser };
