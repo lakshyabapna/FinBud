@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import "./Auth.css";
 
 export default function Signup() {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       const res = await fetch("http://localhost:5001/api/auth/signup", {
         method: "POST",
@@ -22,33 +24,55 @@ export default function Signup() {
       navigate("/login");
     } catch (err) {
       alert(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div style={{ padding: 20 }}>
-      <h2>Signup</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Name"
-          value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={(e) => setForm({ ...form, password: e.target.value })}
-        />
-        <button type="submit">Signup</button>
-      </form>
+    <div className="auth-container">
+      <div className="auth-box">
+        <h2>Create your <span className="highlight">FinBud</span> Account</h2>
+
+        <form onSubmit={handleSubmit}>
+          <label>Name</label>
+          <input
+            type="text"
+            required
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
+            placeholder="Enter your full name"
+          />
+
+          <label>Email</label>
+          <input
+            type="email"
+            required
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+            placeholder="example@email.com"
+          />
+
+          <label>Password</label>
+          <input
+            type="password"
+            required
+            value={form.password}
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
+            placeholder="Enter a secure password"
+          />
+
+          <button type="submit" disabled={loading}>
+            {loading ? "Creating account..." : "Sign Up"}
+          </button>
+        </form>
+
+        <p>
+          Already have an account?{" "}
+          <Link to="/login" className="link">Log in</Link>
+        </p>
+      </div>
     </div>
   );
 }
+

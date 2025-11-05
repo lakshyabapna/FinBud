@@ -7,7 +7,9 @@ export default function Dashboard() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+
     if (!token) {
+      alert("Please login or sign up first to access the dashboard.");
       navigate("/login");
       return;
     }
@@ -22,15 +24,39 @@ export default function Dashboard() {
       })
       .catch(() => {
         localStorage.removeItem("token");
+        alert("Session expired. Please login again.");
         navigate("/login");
       });
   }, [navigate]);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    alert("Logged out successfully!");
+    navigate("/login");
+  };
+
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Dashboard</h1>
+    <div style={{ padding: "30px", fontFamily: "Arial, sans-serif" }}>
+      <h1>FinBud Dashboard</h1>
       {user ? (
-        <p>Welcome, {user.name} 👋</p>
+        <>
+          <p>Welcome, {user.name}! 👋</p>
+          <p>Email: {user.email}</p>
+          <button
+            onClick={handleLogout}
+            style={{
+              marginTop: "20px",
+              padding: "8px 15px",
+              background: "#007bff",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            Logout
+          </button>
+        </>
       ) : (
         <p>Loading user data...</p>
       )}
