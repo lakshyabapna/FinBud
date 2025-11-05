@@ -1,10 +1,27 @@
+import { useNavigate } from "react-router-dom";
+import "./Home.css";
+
 export default function Home() {
+  const navigate = useNavigate();
+
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Welcome to FinSight</h1>
-      <p>
-        <a href="/signup">Signup</a> or <a href="/login">Login</a>
-      </p>
+    <div>
+      <h1>Welcome to FinBud</h1>
+      <div>
+        <button onClick={() => navigate("/signup")}>
+          Signup
+        </button>
+        <button onClick={() => navigate("/login")}>
+          Login
+        </button>
+        <button
+          onClick={() => navigate("/dashboard")}
+        >
+          Go to Dashboard
+        </button>
+      </div>
     </div>
   );
 }
+
+

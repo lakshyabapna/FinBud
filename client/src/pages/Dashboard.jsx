@@ -4,13 +4,16 @@ import { useNavigate } from "react-router-dom";
 export default function Dashboard() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [checked, setChecked] = useState(false); 
 
   useEffect(() => {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      alert("Please login or sign up first to access the dashboard.");
-      navigate("/login");
+      if (!checked) {
+        setChecked(true);
+        navigate("/login", { replace: true }); 
+      }
       return;
     }
 
@@ -24,36 +27,25 @@ export default function Dashboard() {
       })
       .catch(() => {
         localStorage.removeItem("token");
-        alert("Session expired. Please login again.");
-        navigate("/login");
+        if (!checked) {
+          setChecked(true);
+          navigate("/login", { replace: true });
+        }
       });
-  }, [navigate]);
+  }, [navigate, checked]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    alert("Logged out successfully!");
-    navigate("/login");
+    navigate("/login", { replace: true });
   };
 
   return (
-    <div style={{ padding: "30px", fontFamily: "Arial, sans-serif" }}>
+    <div>
       <h1>FinBud Dashboard</h1>
       {user ? (
         <>
-          <p>Welcome, {user.name}! 👋</p>
-          <p>Email: {user.email}</p>
-          <button
-            onClick={handleLogout}
-            style={{
-              marginTop: "20px",
-              padding: "8px 15px",
-              background: "#007bff",
-              color: "white",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-            }}
-          >
+          <p>Welcome, {user.name}!</p>
+          <button>
             Logout
           </button>
         </>
