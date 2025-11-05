@@ -45,7 +45,7 @@ export default function Dashboard() {
       {user ? (
         <>
           <p>Welcome, {user.name}!</p>
-          <button>
+          <button onClick={handleLogout}>
             Logout
           </button>
         </>
