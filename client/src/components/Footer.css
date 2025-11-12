@@ -19,13 +19,6 @@
   min-width: 220px;
 }
 
-.footer-logo {
-  color: #007bff;
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
 .footer-tagline {
   color: #555;
   font-size: 14px;
@@ -95,4 +88,10 @@
   padding-top: 15px;
   font-size: 13px;
   color: #666;
+}
+
+.footer {
+  font-family: var(--body-font);
+  font-weight: 400;
+  color: #555;
 }

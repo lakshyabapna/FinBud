@@ -1,12 +1,12 @@
 import "./Footer.css";
-
+import logo from "../../assets/Screenshot_2025-11-11_at_2.28.23_PM-removebg-preview.png";
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
 
         <div className="footer-left">
-          <h2 className="footer-logo">FinBud</h2>
+          <img src={logo} alt="FinBud Logo" className="nav-logo" />
           <p className="footer-tagline">
             Empowering smarter financial decisions 💡
           </p>
@@ -24,13 +24,13 @@ export default function Footer() {
         <div className="footer-social">
           <h4>Connect with Us</h4>
           <div className="social-icons">
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+            <a href="https://www.linkedin.com/in/lakshya-bapna-73bb50323/" target="_blank" rel="noreferrer">
               <i className="fab fa-linkedin"></i>
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer">
-              <i className="fab fa-twitter"></i>
+            <a href="https://www.instagram.com/lakshyabapna/" target="_blank" rel="noreferrer">
+              <i className="fab fa-instagram"></i>
             </a>
-            <a href="https://github.com" target="_blank" rel="noreferrer">
+            <a href="https://github.com/lakshyabapna" target="_blank" rel="noreferrer">
               <i className="fab fa-github"></i>
             </a>
           </div>

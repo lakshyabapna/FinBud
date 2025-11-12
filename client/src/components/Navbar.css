@@ -3,18 +3,17 @@
   justify-content: space-between;
   align-items: center;
   padding: 18px 70px;
-  background-color: white;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  transition: background-color 0.4s ease, box-shadow 0.4s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  background-color: transparent;
+  box-shadow: none;
+  transition: all 0.3s ease;
 }
 
-.navbar.transparent-bg {
-  background-color: transparent; 
-  box-shadow: none;
+.navbar.transparent {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .nav-left {
@@ -26,9 +25,8 @@
 .nav-logo {
   height: 65px;
   object-fit: contain;
-  padding-right: 50px;
-  padding-bottom: 8px;
-  z-index: 1010; 
+  padding-right: 40px;
+  padding-bottom: 6px;
 }
 
 .nav-menu {
@@ -46,7 +44,7 @@
   cursor: pointer;
   font-weight: 500;
   font-family: "Inter", sans-serif;
-  color: #222; 
+  color: #1b1b1b;
   transition: color 0.3s ease;
 }
 
@@ -65,10 +63,35 @@
   margin-top: 5px;
   margin-left: 30px;
   cursor: pointer;
-  z-index: 1010; 
 }
 
 .signup-btn:hover {
   background-color: #005ed2;
   transform: translateY(-2px);
 }
+
+@media (max-width: 992px) {
+  .navbar {
+    padding: 15px 30px;
+  }
+
+  .nav-menu {
+    gap: 20px;
+    width: auto;
+  }
+
+  .nav-logo {
+    height: 55px;
+  }
+}
+.nav-menu li {
+  font-family: var(--body-font);
+  font-weight: 500;
+  color: #222;
+}
+
+.signup-btn {
+  font-family: var(--heading-font);
+  font-weight: 600;
+}
+
