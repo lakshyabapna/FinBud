@@ -119,3 +119,58 @@ Dark mode and user theme customization
 License
 This project is licensed under the MIT License – feel free to use and modify it.
 
+git clone https://github.com/lakshyabapna/FinBud.git
+cd FinBud
+
+
+Create a `.env` file and configure:
+
+cd backend
+npm install
+
+
+Create a `.env` file and configure:
+
+PORT=5000
+DATABASE_URL=your_mysql_connection_url
+JWT_SECRET=your_secret_key
+OPENAI_API_KEY=your_api_key
+
+
+Run the backend:
+
+npm start
+
+
+#### 3. Frontend Setup
+
+cd ../frontend
+npm install
+npm run dev
+
+
+Then open your browser and visit:
+
+http://localhost:5173
+
+
+---
+
+## 🚀 Future Enhancements
+- Integration with bank APIs for automated transaction imports
+- Machine learning-based savings suggestions
+- Multi-currency support
+- Dark mode and user theme customization
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** – feel free to use and modify it.
+
+---
+
+### 💡 Author
+
+Developed by [Lakshya Bapna](https://github.com/lakshyabapna)
+
