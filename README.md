@@ -77,7 +77,7 @@ Steps
 Clone the repository
 
 bash
-git clone https://github.com/yourusername/FinBud.git
+git clone https://github.com/lakshyabapna/FinBud.git
 cd FinBud
 Backend Setup
 
