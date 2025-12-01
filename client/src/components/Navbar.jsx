@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import appLogo from "../../assets/image-removebg-preview.png";
 import landingLogo from "../../assets/Screenshot_2025-11-11_at_2.28.23_PM-removebg-preview.png";
-import "./navbar.css";
+import "./Navbar.css";
 
 export default function Navbar() {
   const location = useLocation();
