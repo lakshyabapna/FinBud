@@ -18,6 +18,7 @@ connectDB();
 const allowedOrigins = [
   "http://localhost:5173",           // Local development
   "https://fin-bud-two.vercel.app",  // Production Vercel deployment
+  "https://fin-5qf9k8dvt-lakshyabapnas-projects.vercel.app",
   process.env.FRONTEND_URL,          // Additional custom origin from .env
 ].filter(Boolean); // Remove undefined/null values
 
