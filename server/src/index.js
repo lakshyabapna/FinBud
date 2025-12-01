@@ -11,7 +11,13 @@ const transactionsRoutes = require("./routes/transactions");
 const app = express();
 
 // FRONTEND_URL must match your frontend origin EXACTLY (no trailing slash)
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
+// BEFORE:
+// const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
+
+// AFTER (safe, trims and falls back)
+const FRONTEND_URL = (process.env.FRONTEND_URL || "http://localhost:5173").toString().trim();
+console.log("🌐 Allowed frontend origin (trimmed):", FRONTEND_URL);
+
 
 // Proper CORS config for credentialed requests
 const corsOptions = {
