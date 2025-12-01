@@ -1,0 +1,40 @@
+/* categoryDonut.css */
+.donut-wrapper {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:stretch;
+}
+
+.donut-title {
+  margin:0 0 6px 0;
+  font-size:18px;
+  color:#0b1220;
+}
+
+.donut-chart {
+  background: #fff;
+  border-radius:12px;
+  padding:8px;
+  box-shadow: 0 6px 20px rgba(2,6,23,0.06);
+  border:1px solid #eef2ff;
+  min-height:320px;
+}
+
+.donut-total {
+  text-align:center;
+  color:#374151;
+  font-size:14px;
+}
+
+.donut-placeholder {
+  height:320px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#6b7280;
+  background:#fff;
+  border-radius:12px;
+  border:1px solid #f1f5f9;
+  box-shadow: 0 6px 20px rgba(2,6,23,0.03);
+}
