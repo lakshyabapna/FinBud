@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import {
   PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer
 } from "recharts";
-import "./categoryDonut.css";
+import "./CategoryDonut.css";
 
 const DEFAULT_COLORS = [
   "#4C7BFF", "#00C2A8", "#FFB86B", "#FF7A76",
