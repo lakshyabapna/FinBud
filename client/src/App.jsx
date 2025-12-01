@@ -5,6 +5,19 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+import Navbar from "./components/Navbar";
+import Transactions from "./pages/Transactions";
+import Summary from "./pages/Summary";
+
+function Layout({ children }) {
+  return (
+    <>
+      <Navbar />
+      {children}
+    </>
+  );
+}
+
 function App() {
   return (
     <Router>
@@ -16,7 +29,29 @@ function App() {
           path="/dashboard"
           element={
             <ProtectedRoute>
-              <Dashboard />
+              <Layout>
+                <Dashboard />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/transactions"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <Transactions />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/summary"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <Summary />
+              </Layout>
             </ProtectedRoute>
           }
         />

@@ -25,7 +25,7 @@ export default function Home() {
           <h1>Smarter Way to Manage Your Finances</h1>
           <p>
             FinBud helps you track your expenses, set budgets, and get
-            AI-powered insights for better savings and smarter decisions.
+             insights for better savings and smarter decisions.
           </p>
           <div className="hero-buttons">
             <button onClick={() => navigate("/signup")} className="primary-btn">
@@ -41,7 +41,7 @@ export default function Home() {
       <section className="offers">
         <h2>What FinBud Offers</h2>
         <p>
-          Everything you need to take control of your financial future — all in one place.
+          Everything you need to take control of your financial future - all in one place.
         </p>
       </section>
 
@@ -50,7 +50,7 @@ export default function Home() {
           <img src={spendingIcon} alt="Track Spending" className="feature-icon" />
           <h3>Track Your Spending</h3>
           <p>
-            Record every income and expense to understand where your money goes — effortlessly.
+            Record every income and expense to understand where your money goes effortlessly.
           </p>
         </div>
 
@@ -66,7 +66,7 @@ export default function Home() {
           <img src={aiIcon} alt="Smart Insights" className="feature-icon" />
           <h3>Smart Insights</h3>
           <p>
-            Get AI-driven summaries and personalized financial insights tailored to your habits.
+            Get summaries and personalized financial insights tailored to your habits.
           </p>
         </div>
       </section>

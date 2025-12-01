@@ -11,7 +11,10 @@ const DEFAULT_COLORS = [
   "#EF4444", "#64748B"
 ];
 
-export default function CategoryDonut({ apiUrl = "http://localhost:5001/api/summary/category" }) {
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5001";
+
+export default function CategoryDonut({ apiUrl = `${API_BASE}/api/summary/category`, refreshKey }) {
+  // ... (existing state)
   const [data, setData] = useState(null);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -20,13 +23,12 @@ export default function CategoryDonut({ apiUrl = "http://localhost:5001/api/summ
     let cancelled = false;
 
     async function fetchData() {
+      // ... (existing fetch logic)
       setLoading(true);
       try {
         const token = localStorage.getItem("token");
-        // if no token, skip fetching (user not logged in)
         if (!token) {
-          // optional: use mock
-          if (!cancelled) applyMock();
+          if (!cancelled) setData([]);
           return;
         }
 
@@ -35,49 +37,34 @@ export default function CategoryDonut({ apiUrl = "http://localhost:5001/api/summ
         });
 
         if (!res.ok) {
-          // if backend not ready or returns 401/403, fallback to mock
-          const errText = await res.text().catch(()=>"");
-          console.warn("Category summary fetch failed:", res.status, errText);
-          if (!cancelled) applyMock();
+          if (!cancelled) setData([]);
           return;
         }
 
         const json = await res.json();
-        if (json && json.breakdown) {
+        if (json && json.categories) {
           if (!cancelled) {
-            setData(json.breakdown.map((d, idx) => ({
+            setData(json.categories.map((d, idx) => ({
               name: d.name,
               amount: Number(d.amount || 0),
-              color: d.color || DEFAULT_COLORS[idx % DEFAULT_COLORS.length],
+              color: DEFAULT_COLORS[idx % DEFAULT_COLORS.length],
             })));
-            setTotal(Number(json.totalExpense || 0));
+            setTotal(json.categories.reduce((acc, curr) => acc + Number(curr.amount || 0), 0));
           }
         } else {
-          if (!cancelled) applyMock();
+          if (!cancelled) setData([]);
         }
       } catch (err) {
         console.error("Error fetching category summary:", err);
-        if (!cancelled) applyMock();
+        if (!cancelled) setData([]);
       } finally {
         if (!cancelled) setLoading(false);
       }
     }
 
-    function applyMock() {
-      const mock = [
-        { name: "Food", amount: 4200, color: "#FFB86B" },
-        { name: "Transport", amount: 2100, color: "#60A5FA" },
-        { name: "Subscriptions", amount: 900, color: "#A78BFA" },
-        { name: "Shopping", amount: 700, color: "#FF7A76" }
-      ];
-      setData(mock);
-      setTotal(mock.reduce((s, x) => s + x.amount, 0));
-      setLoading(false);
-    }
-
     fetchData();
     return () => { cancelled = true; };
-  }, [apiUrl]);
+  }, [apiUrl, refreshKey]);
 
   if (loading) {
     return <div className="donut-placeholder">Loading chart…</div>;

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
 
-:root {
+/* Override variables locally for Home page to keep it light themed */
+.home-container {
   --heading-font: 'Poppins', sans-serif;
   --body-font: 'Manrope', sans-serif;
   --primary-color: #007bff;
@@ -8,16 +9,46 @@
   --bg-light: #f9fbff;
   --card-bg: #f8faff;
   --border-color: #e2e8f0;
-}
 
-.home-container {
+  /* Override global dark theme variables */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8faff;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #101010;
+  --text-secondary: #555555;
+  --text-muted: #64748b;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
   font-family: var(--body-font);
   background-color: var(--bg-light);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  color: var(--text-primary);
 }
 
+/* Ensure transparent navbar on home page stays transparent and text is dark */
+.home-container .navbar-transparent {
+  background: transparent;
+  border-bottom: none;
+  backdrop-filter: none;
+}
+
+.home-container .navbar-transparent .nav-link {
+  color: var(--text-secondary);
+}
+
+.home-container .navbar-transparent .nav-link:hover {
+  color: var(--primary-color);
+  background: rgba(0, 123, 255, 0.1);
+}
+
+/* Ensure footer logo is not inverted on light theme */
+.home-container .footer-left .nav-logo {
+  filter: none;
+}
 
 .hero {
   display: flex;
@@ -47,9 +78,11 @@
   0% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-12px);
   }
+
   100% {
     transform: translateY(0px);
   }
@@ -180,6 +213,7 @@
 .feature-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+  border-color: var(--border-color);
 }
 
 .feature-icon {

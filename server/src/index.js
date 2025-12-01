@@ -7,21 +7,35 @@ const cookieParser = require("cookie-parser");
 const authRoutes = require("./routes/auth");
 const summaryRoutes = require("./routes/summary");
 const transactionsRoutes = require("./routes/transactions");
+const connectDB = require("./db");
 
 const app = express();
 
-// FRONTEND_URL must match your frontend origin EXACTLY (no trailing slash)
-// BEFORE:
-// const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
+// Connect to MongoDB
+connectDB();
 
-// AFTER (safe, trims and falls back)
-const FRONTEND_URL = (process.env.FRONTEND_URL || "http://localhost:5173").toString().trim();
-console.log("🌐 Allowed frontend origin (trimmed):", FRONTEND_URL);
+// Allow multiple origins for CORS (development + production)
+const allowedOrigins = [
+  "http://localhost:5173",           // Local development
+  "https://fin-bud-two.vercel.app",  // Production Vercel deployment
+  process.env.FRONTEND_URL,          // Additional custom origin from .env
+].filter(Boolean); // Remove undefined/null values
 
+console.log("🌐 Allowed CORS origins:", allowedOrigins);
 
-// Proper CORS config for credentialed requests
+// CORS configuration with multiple origin support
 const corsOptions = {
-  origin: FRONTEND_URL,
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, Postman, or same-origin)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.warn("❌ CORS blocked origin:", origin);
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization", "Accept"],
@@ -31,7 +45,7 @@ const corsOptions = {
 app.use(express.json());
 app.use(cookieParser());
 
-// Use CORS with the options. This automatically handles preflight for registered routes.
+// Use CORS with the options
 app.use(cors(corsOptions));
 
 // Root endpoint
@@ -54,5 +68,4 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`🌐 Allowed frontend origin: ${FRONTEND_URL}`);
 });

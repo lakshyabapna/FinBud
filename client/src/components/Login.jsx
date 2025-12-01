@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useToast } from "../hooks/useToast";
+import Toast from "./Toast";
 import "./Auth.css";
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { toast, showToast, hideToast } = useToast();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +27,7 @@ export default function Login() {
       localStorage.setItem("token", data.token);
       navigate("/dashboard");
     } catch (err) {
-      alert(err.message);
+      showToast(err.message, "error");
     } finally {
       setLoading(false);
     }
@@ -32,6 +35,7 @@ export default function Login() {
 
   return (
     <div className="auth-container">
+      {toast && <Toast message={toast.message} type={toast.type} onClose={hideToast} />}
       <div className="auth-box">
         <h2>Welcome back to <span className="highlight">FinBud</span></h2>
 
@@ -60,10 +64,11 @@ export default function Login() {
         </form>
 
         <p>
-          Don’t have an account?{" "}
+          Don't have an account?{" "}
           <Link to="/signup" className="link">Sign up</Link>
         </p>
       </div>
     </div>
   );
 }
+
