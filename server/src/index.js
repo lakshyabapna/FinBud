@@ -46,7 +46,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Use CORS with the options
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Root endpoint
 app.get("/", (req, res) => {
