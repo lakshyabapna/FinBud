@@ -153,6 +153,8 @@ Then open your browser and visit:
 
 http://localhost:5173
 
+Frontend URL - https://fin-bud-two.vercel.app/
+
 
 ---
 
