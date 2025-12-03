@@ -1,4 +1,4 @@
-/* src/pages/dashboard.css */
+
 
 :root {
   --bg: var(--bg-primary);
@@ -28,7 +28,7 @@
   color: var(--text-primary);
 }
 
-/* Header */
+
 .dashboard-header {
   display: flex;
   justify-content: space-between;
@@ -106,7 +106,7 @@
   background-color: var(--primary-hover);
 }
 
-/* Overview Grid */
+
 .overview-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -129,7 +129,7 @@
   margin-bottom: 0.5rem;
 }
 
-/* Wallet Card */
+
 .wallet-card {
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   border: none;
@@ -154,7 +154,7 @@
   font-size: 0.75rem;
 }
 
-/* Pulse Card */
+
 .pulse-amount {
   font-size: 2rem;
   font-weight: 700;
@@ -174,7 +174,7 @@
   color: var(--danger-color);
 }
 
-/* Recent Activity */
+
 .section-header {
   display: flex;
   justify-content: space-between;
@@ -259,7 +259,7 @@
   color: var(--success-color);
 }
 
-/* Quick Actions */
+
 .quick-actions {
   display: grid;
   grid-template-columns: 1fr;
@@ -290,7 +290,7 @@
   font-weight: 500;
 }
 
-/* Main grid */
+
 .main-grid {
   display: grid;
   grid-template-columns: 1fr 420px;
@@ -298,7 +298,7 @@
   align-items: start;
 }
 
-/* chart card */
+
 .chart-card {
   background: var(--bg-secondary);
   border-radius: var(--radius);
@@ -307,7 +307,7 @@
   border: 1px solid var(--border-color);
 }
 
-/* transactions card */
+
 .transactions-card {
   background: var(--bg-secondary);
   border-radius: var(--radius);
@@ -318,7 +318,7 @@
   overflow: auto;
 }
 
-/* loading overlay */
+
 .loading-overlay {
   position: fixed;
   left: 0;
@@ -334,7 +334,7 @@
   color: var(--text-primary);
 }
 
-/* responsive */
+
 @media (max-width: 980px) {
   .main-grid {
     grid-template-columns: 1fr;

@@ -86,7 +86,7 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-container">
-      {/* Header */}
+
       <header className="dashboard-header">
         <div className="greeting-section">
           <div className="greeting-main">
@@ -101,9 +101,9 @@ export default function Dashboard() {
         </button>
       </header>
 
-      {/* Overview Cards */}
+
       <div className="overview-grid">
-        {/* Wallet Card */}
+ 
         <div className="card wallet-card">
           <div className="card-label">Current Balance</div>
           <div className="wallet-amount">₹{balance.toLocaleString()}</div>
@@ -112,7 +112,7 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Pulse Card */}
+
         <div className="card pulse-card">
           <div className="card-label">Today's Pulse</div>
           <div className="pulse-amount">₹{dailyStats.today.toLocaleString()}</div>
@@ -122,7 +122,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Recent Activity */}
+
       <div className="section-header">
         <h2>Recent Activity</h2>
         <Link to="/transactions" className="see-all">See All</Link>
@@ -149,7 +149,7 @@ export default function Dashboard() {
         )}
       </div>
 
-      {/* Quick Actions */}
+
       <div className="quick-actions">
         <Link to="/summary" className="action-card">
           <span className="action-icon">📊</span>

@@ -1,4 +1,4 @@
-// src/components/RecentTransactions.jsx
+
 import React, { useEffect, useState } from "react";
 import { useToast, useConfirm } from "../hooks/useToast";
 import Toast from "./Toast";
@@ -12,7 +12,7 @@ export default function RecentTransactions({ onTxAdded, refreshKey }) {
   const { confirmState, showConfirm } = useConfirm();
 
   const fetchTx = async () => {
-    // ... (existing fetch logic)
+
     setLoading(true);
     try {
       const token = localStorage.getItem("token");

@@ -53,7 +53,7 @@ export default function TransactionModal({ onClose, onAdded, editTransaction = n
         : `${API_BASE}/api/transactions`;
       const method = editTransaction ? "PUT" : "POST";
 
-      // Use custom category if "Other" is selected and customCategory is provided
+
       const finalCategory = form.category === "Other" && customCategory
         ? customCategory
         : form.category;

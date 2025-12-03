@@ -1,9 +1,9 @@
-// src/db.js
+
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
     try {
-        // Support both MONGO_URI and DATABASE_URL for flexibility
+        
         const mongoURI = process.env.MONGO_URI || process.env.DATABASE_URL || "mongodb://localhost:27017/finbud";
 
         if (!process.env.MONGO_URI && !process.env.DATABASE_URL) {
@@ -11,7 +11,7 @@ const connectDB = async () => {
         }
 
         const conn = await mongoose.connect(mongoURI, {
-            serverSelectionTimeoutMS: 30000, // Increased timeout for slow connections
+            serverSelectionTimeoutMS: 30000, 
             socketTimeoutMS: 45000,
         });
 

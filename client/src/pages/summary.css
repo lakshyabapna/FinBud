@@ -8,7 +8,7 @@
     min-height: 100vh;
 }
 
-/* Header */
+
 .report-header {
     display: flex;
     justify-content: space-between;
@@ -50,7 +50,7 @@
     border-color: var(--border-hover);
 }
 
-/* Metrics Row */
+
 .metrics-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -97,7 +97,7 @@
     color: #8b5cf6;
 }
 
-/* Report Sections */
+
 .report-section {
     background: var(--bg-secondary);
     padding: 1.5rem;
@@ -114,14 +114,14 @@
     color: var(--text-primary);
 }
 
-/* Breakdown Grid */
+
 .breakdown-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
 }
 
-/* Insights */
+
 .insight-item {
     display: flex;
     gap: 1rem;

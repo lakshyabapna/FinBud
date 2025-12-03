@@ -6,7 +6,7 @@
     color: var(--text-primary);
 }
 
-/* Header */
+
 .tx-header-section {
     display: flex;
     justify-content: space-between;
@@ -26,7 +26,7 @@
     margin-top: 0.25rem;
 }
 
-/* Stats Row */
+
 .tx-stats-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -69,7 +69,7 @@
     color: var(--primary-color);
 }
 
-/* Content Card */
+
 .tx-content-card {
     background: var(--bg-secondary);
     border-radius: 16px;
@@ -78,7 +78,7 @@
     overflow: hidden;
 }
 
-/* Filters */
+
 .tx-filters {
     padding: 1.75rem;
     border-bottom: 1px solid var(--border-color);
@@ -156,7 +156,7 @@
     transform: translateY(0);
 }
 
-/* Table */
+
 .table-responsive {
     overflow-x: auto;
 }
@@ -191,7 +191,7 @@
     background-color: var(--bg-tertiary);
 }
 
-/* Table Cells */
+
 .date-cell {
     text-align: center;
     width: 80px;

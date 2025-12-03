@@ -27,7 +27,7 @@
   object-fit: contain;
   margin-bottom: 10px;
   filter: brightness(0) invert(1);
-  /* Make logo white for dark mode if it's black */
+  
 }
 
 .footer-tagline {

@@ -1,4 +1,4 @@
-// src/components/ProtectedRoute.jsx
+
 import { useEffect, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 
@@ -13,16 +13,14 @@ export default function ProtectedRoute({ children }) {
 
     const verify = async () => {
       try {
-        // Try to read token(s) from localStorage (support both keys)
+      
         const localToken =
           localStorage.getItem("token") || localStorage.getItem("finbud_token");
 
-        // Build headers — include Authorization only if a token exists.
+       
         const headers = { "Content-Type": "application/json" };
         if (localToken) headers.Authorization = `Bearer ${localToken}`;
 
-        // Call /api/auth/me on the configured backend.
-        // credentials: 'include' allows cookie-based sessions to be sent as well.
         const res = await fetch(`${API_BASE}/api/auth/me`, {
           method: "GET",
           headers,
@@ -32,8 +30,7 @@ export default function ProtectedRoute({ children }) {
         if (!isMounted) return;
 
         if (res.ok) {
-          // Optionally you could parse the user here:
-          // const body = await res.json();
+          
           setStatus({ loading: false, ok: true });
         } else {
           setStatus({ loading: false, ok: false });
@@ -51,7 +48,7 @@ export default function ProtectedRoute({ children }) {
     };
   }, []);
 
-  // Show a basic loading placeholder until verification finishes.
+ 
   if (status.loading) {
     return (
       <div style={{
@@ -67,10 +64,10 @@ export default function ProtectedRoute({ children }) {
   }
 
   if (!status.ok) {
-    // Not authenticated — redirect to login, preserve intended path
+   
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  // Authenticated — render children (protected content)
+
   return children;
 }

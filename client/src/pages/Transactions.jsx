@@ -14,7 +14,7 @@ export default function Transactions() {
     const [refreshKey, setRefreshKey] = useState(0);
     const { confirmState, showConfirm } = useConfirm();
 
-    // Filters
+
     const [filterCategory, setFilterCategory] = useState("All");
     const [filterType, setFilterType] = useState("All");
 
@@ -62,7 +62,7 @@ export default function Transactions() {
         }
     };
 
-    // Define predefined categories
+
     const PREDEFINED_CATEGORIES = [
         "Food & Dining",
         "Transportation",
@@ -74,19 +74,19 @@ export default function Transactions() {
     ];
 
     const filteredTransactions = transactions.filter(t => {
-        // Handle category filter
+    
         if (filterCategory !== "All") {
             if (filterCategory === "Other") {
-                // Show transactions with "Other" OR any custom category (not in predefined list)
+            
                 const isCustomCategory = !PREDEFINED_CATEGORIES.includes(t.category);
                 if (!isCustomCategory && t.category !== "Other") return false;
             } else {
-                // Exact match for predefined categories
+          
                 if (t.category !== filterCategory) return false;
             }
         }
 
-        // Handle type filter
+
         if (filterType !== "All" && t.type !== filterType) return false;
 
         return true;
@@ -112,7 +112,7 @@ export default function Transactions() {
                 </button>
             </div>
 
-            {/* Stats Row */}
+
             <div className="tx-stats-row">
                 <div className="tx-stat-card income">
                     <span className="tx-stat-label">Total Income</span>
@@ -128,7 +128,7 @@ export default function Transactions() {
                 </div>
             </div>
 
-            {/* Filters & Table */}
+
             <div className="tx-content-card">
                 <div className="tx-filters">
                     <div className="filter-group">

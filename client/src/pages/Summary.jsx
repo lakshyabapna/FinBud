@@ -98,7 +98,7 @@ export default function Summary() {
 
     return (
         <div className="summary-container" ref={reportRef}>
-            {/* Header */}
+
             <header className="report-header">
                 <div>
                     <h1>Monthly Financial Report</h1>
@@ -111,7 +111,7 @@ export default function Summary() {
                 </div>
             </header>
 
-            {/* Key Metrics Row */}
+
             <div className="metrics-row">
                 <div className="metric-card">
                     <div className="metric-label">Total Income</div>
@@ -131,7 +131,6 @@ export default function Summary() {
                 </div>
             </div>
 
-            {/* Main Chart: Income vs Expense */}
             <div className="report-section">
                 <h2>Income vs Expense Trend</h2>
                 <div style={{ width: "100%", height: 300 }}>
@@ -152,9 +151,9 @@ export default function Summary() {
                 </div>
             </div>
 
-            {/* Breakdown Grid */}
+
             <div className="breakdown-grid">
-                {/* Category Donut */}
+
                 <div className="report-section">
                     <h2>Expense Breakdown</h2>
                     <div style={{ width: "100%", height: 300 }}>
@@ -180,7 +179,7 @@ export default function Summary() {
                     </div>
                 </div>
 
-                {/* Insights Panel */}
+
                 <div className="report-section insights-panel">
                     <h2>Insights</h2>
                     <div className="insight-item">

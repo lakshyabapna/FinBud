@@ -1,4 +1,4 @@
-// CategoryDonut.jsx
+
 import React, { useEffect, useState } from "react";
 import {
   PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer
@@ -14,7 +14,7 @@ const DEFAULT_COLORS = [
 const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5001";
 
 export default function CategoryDonut({ apiUrl = `${API_BASE}/api/summary/category`, refreshKey }) {
-  // ... (existing state)
+
   const [data, setData] = useState(null);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -23,7 +23,7 @@ export default function CategoryDonut({ apiUrl = `${API_BASE}/api/summary/catego
     let cancelled = false;
 
     async function fetchData() {
-      // ... (existing fetch logic)
+ 
       setLoading(true);
       try {
         const token = localStorage.getItem("token");
