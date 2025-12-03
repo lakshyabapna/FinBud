@@ -1,178 +1,98 @@
-FinBud - A Smart Personal Finance Buddy
-FinBud helps users take control of their personal finances through a smart, intuitive, and AI-powered platform. It simplifies expense tracking, savings analysis, and budget planning, empowering users to make smarter financial decisions effortlessly.
+# FinBud — A Smart Personal Finance Buddy
 
-Problem Statement
-Managing personal finances can often feel confusing and time-consuming. People struggle to monitor where their money goes, how much they save, and whether they’re meeting their goals.
+**FinBud** helps users take control of their personal finances through an intuitive, AI-powered platform. It simplifies expense tracking, savings analysis, and budget planning — empowering users to make smarter financial decisions effortlessly.
 
-FinBud solves this by offering:
+---
 
-A simple way to record income and expenses.
+## 🚨 Problem Statement
 
-Real-time visual insights and summaries.
+Managing personal finances can feel confusing and time-consuming. People struggle to monitor spending, track savings, and meet their financial goals.
 
-AI-generated financial insights to improve savings and spending behavior.
+**FinBud solves this by providing:**
+- A simple way to record income and expenses
+- Real-time visual insights and summaries
+- AI-generated financial insights to improve spending and savings behavior
 
-System Architecture
-Architecture Flow:
-Frontend → Backend (API) → Database
+---
 
-Tech Stack Overview:
+## 🏗️ System Architecture
 
-Layer	Technology
-Frontend	React.js, React Router, Recharts
-Backend	Node.js, Express.js
-Database	MySQL
-Authentication	JWT (JSON Web Tokens)
-AI	OpenAI API
-Hosting	Frontend – Vercel, Backend – Render
-Hosting Setup:
+**Architecture Flow:**  
+**Frontend → Backend (API) → Database**
 
-Frontend → Vercel
+### Tech Stack
 
-Backend → Render
+| Layer              | Technology                  |
+|--------------------|-----------------------------|
+| **Frontend**       | React.js, React Router, Recharts |
+| **Backend**        | Node.js, Express.js         |
+| **Database**       | MongoDB                     |
+| **Authentication** | JWT (JSON Web Tokens)       |
+| **AI**             | OpenAI API                  |
+| **Hosting**        | Frontend — Vercel, Backend — Render |
 
-Database → MySQL(aiven)
+### Data Flow
+1. User interacts with the frontend (dashboard, charts, forms).
+2. The frontend sends API requests to the backend.
+3. The backend communicates with MongoDB to store and retrieve data.
+4. The frontend displays real-time insights and charts to the user.
 
-Data Flow:
+---
 
-The user interacts with the frontend (dashboard, charts, forms).
+## ⭐ Key Features
 
-The frontend sends API requests to the backend.
+- **Authentication (JWT):** Secure signup & login
+- **Transaction Management:** Add, edit, delete transactions
+- **Dashboard & Analytics:** Real-time income, expenses & balance
+- **Spending Charts:** Pie + line charts using Recharts
+- **Budget Planning:** Set monthly limits and track progress
+- **AI Insights:** Smart summaries like *"You spent 30% more on food this month."*
+- **Clean Routing:** Home, Login, Signup, Dashboard, History, Add Transaction, Profile
 
-The backend interacts with the database and processes logic.
+---
 
-Responses are sent back to the frontend, which displays real-time data visualizations.
+## 📡 API Overview
 
-Key Features
-Category	Features
-Authentication & Authorization	Secure user registration, login/logout via JWT
-Transaction Management (CRUD)	Add, edit, delete, and view income/expense transactions
-Dashboard & Analytics	Real-time display of income, expenses, and balance
-Category-wise Charts	Visualize spending using Pie and Line Charts
-Budget Planning	Set monthly limits and receive alerts when nearing them
-AI Financial Insights	Analyze spending and get insights like “You spent 30% more this month on food.”
-Frontend Routing	Pages: Home, Login, Signup, Dashboard, Transactions, Add Transaction, Profile
+| Endpoint                  | Method | Description                  | Access |
+|---------------------------|--------|------------------------------|--------|
+| `/api/auth/signup`        | POST   | Register a new user          | Public |
+| `/api/auth/login`         | POST   | Authenticate a user          | Public |
+| `/api/transactions`       | GET    | Get all transactions         | Auth   |
+| `/api/transactions`       | POST   | Add a new transaction        | Auth   |
+| `/api/transactions/:id`   | PUT    | Update a transaction         | Auth   |
+| `/api/transactions/:id`   | DELETE | Delete a transaction         | Auth   |
+| `/api/summary/monthly`    | GET    | Monthly summary              | Auth   |
+| `/api/summary/category`   | GET    | Category-wise summary        | Auth   |
+| `/api/ai/insight`         | POST   | AI-powered financial summary | Auth   |
 
-API Overview
-Endpoint	Method	Description	Access
-/api/auth/signup	POST	Register new user	Public
-/api/auth/login	POST	Authenticate user	Public
-/api/transactions	GET	Retrieve all transactions	Authenticated
-/api/transactions	POST	Add new transaction	Authenticated
-/api/transactions/:id	PUT	Edit existing transaction	Authenticated
-/api/transactions/:id	DELETE	Delete transaction	Authenticated
-/api/summary/monthly	GET	Fetch monthly income, expense, and balance summary	Authenticated
-/api/summary/category	GET	Get category-wise breakdown for charts	Authenticated
-/api/ai/insight	POST	Generate AI-based financial summary	Authenticated
+---
 
-Installation & Setup
-Prerequisites
-Node.js (v18+ recommended)
+## ⚙️ Installation & Setup
 
-MySQL Database
+### Prerequisites
+- Node.js (v18+ recommended)
+- MongoDB Database (Atlas or local)
+- OpenAI API key
 
-OpenAI API key
-
-Steps
-Clone the repository
-
-bash
+### Clone Repository
 git clone https://github.com/lakshyabapna/FinBud.git
 cd FinBud
-Backend Setup
-
-bash
-cd backend
+### Backend Setup
 npm install
-Create a .env file and configure:
 
-text
+Create a `.env` file in the `backend` directory:
 PORT=5000
-DATABASE_URL=your_mysql_connection_url
+DATABASE_URL=your_mongodb_connection_url
 JWT_SECRET=your_secret_key
-OPENAI_API_KEY=your_api_key
+OPENAI_API_KEY=your_openai_api_key
 
-Run backend:
-
-bash
-npm start
-Frontend Setup
-
-bash
-cd ../frontend
-npm install
-npm run dev
-Open your browser and visit:
-
-text
-http://localhost:5173
-
-Future Enhancements
-Integration with bank APIs for automated transaction imports
-
-Machine learning-based savings suggestions
-
-Multi-currency support
-
-Dark mode and user theme customization
-
-License
-This project is licensed under the MIT License – feel free to use and modify it.
-
-git clone https://github.com/lakshyabapna/FinBud.git
-cd FinBud
-
-
-Create a `.env` file and configure:
-
-cd backend
-npm install
-
-
-Create a `.env` file and configure:
-
-PORT=5000
-DATABASE_URL=your_mysql_connection_url
-JWT_SECRET=your_secret_key
-OPENAI_API_KEY=your_api_key
-
-
-Run the backend:
-
+Start the backend server:
 npm start
 
-
-#### 3. Frontend Setup
-
-cd ../frontend
-npm install
+or for development
 npm run dev
 
+Start the frontend development server:
+npm run dev
 
-Then open your browser and visit:
-
-http://localhost:5173
-
-Frontend URL - https://fin-bud-two.vercel.app/
-
-
----
-
-## 🚀 Future Enhancements
-- Integration with bank APIs for automated transaction imports
-- Machine learning-based savings suggestions
-- Multi-currency support
-- Dark mode and user theme customization
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License** – feel free to use and modify it.
-
----
-
-### 💡 Author
-
-Developed by [Lakshya Bapna](https://github.com/lakshyabapna)
 
